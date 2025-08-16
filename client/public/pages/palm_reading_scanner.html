@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palm Reading Scanner - ASTRO VANBA</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fastrovanb4866back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen font-body">
+    <!-- Top Header -->
+    <header class="bg-surface/80 backdrop-blur-cosmic border-b border-cosmic sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Back Button and Title -->
+                <div class="flex items-center space-x-3">
+                    <a href="dashboard_home.html" class="p-2 text-text-secondary hover:text-primary transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </a>
+                    <div>
+                        <h1 class="text-lg font-heading font-semibold text-text-primary">Palm Reading Scanner</h1>
+                        <p class="text-sm text-text-secondary">AI-Powered Palmistry & Vedic Astrology Analysis</p>
+                    </div>
+                </div>
+                
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-3">
+                    <!-- History -->
+                    <button class="p-2 text-text-secondary hover:text-primary transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Voice Toggle -->
+                    <button id="voiceToggle" class="p-2 bg-primary/20 text-primary rounded-full hover:bg-primary/30 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-6 pb-24">
+        <!-- Birth Details Form -->
+        <section id="birthDetailsSection" class="mb-8">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-2xl p-6 cosmic-shadow-lg border border-cosmic">
+                <h2 class="text-xl font-heading font-semibold text-text-primary mb-4">Enter Your Birth Details</h2>
+                <p class="text-sm text-text-secondary mb-6">For accurate astrological predictions with your palm reading</p>
+                
+                <form id="birthDetailsForm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium text-text-primary mb-1">Date of Birth</label>
+                            <input type="date" id="dob" class="w-full bg-background/50 border border-cosmic rounded-lg px-4 py-2 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-text-primary mb-1">Time of Birth</label>
+                            <input type="time" id="tob" class="w-full bg-background/50 border border-cosmic rounded-lg px-4 py-2 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-text-primary mb-1">Place of Birth (Latitude)</label>
+                            <input type="number" id="lat" step="0.0001" value="28.6139" class="w-full bg-background/50 border border-cosmic rounded-lg px-4 py-2 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-text-primary mb-1">Place of Birth (Longitude)</label>
+                            <input type="number" id="lng" step="0.0001" value="77.2090" class="w-full bg-background/50 border border-cosmic rounded-lg px-4 py-2 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                    </div>
+                    
+                    <button type="button" id="calculateBtn" class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                        Calculate Astrological Data
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Astrology Results Section -->
+        <section id="astrologyResultsSection" class="hidden mb-8">
+            <div class="bg-gradient-to-br from-primary-900/20 to-secondary-900/20 rounded-2xl p-6 cosmic-shadow-lg border border-cosmic">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-heading font-semibold text-text-primary">Vedic Astrology Overview</h2>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-success rounded-full animate-pulse"></div>
+                        <span class="text-sm text-success font-medium">Astrological Analysis</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <!-- Rashi (Zodiac Sign) -->
+                    <div class="bg-surface/40 rounded-xl p-4 text-center">
+                        <div class="w-12 h-12 bg-primary/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v10m0 0v7m0-7h7m-7 0H5"/>
+                            </svg>
+                        </div>
+                        <p class="text-sm font-medium text-text-primary mb-1">Rashi (Moon Sign)</p>
+                        <p id="rashiDisplay" class="text-lg font-heading text-primary">-</p>
+                        <p id="rashiTraits" class="text-xs text-text-secondary mt-1">Calculating...</p>
+                    </div>
+
+                    <!-- Ascendant -->
+                    <div class="bg-surface/40 rounded-xl p-4 text-center">
+                        <div class="w-12 h-12 bg-accent/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                            </svg>
+                        </div>
+                        <p class="text-sm font-medium text-text-primary mb-1">Ascendant (Lagna)</p>
+                        <p id="ascendantDisplay" class="text-lg font-heading text-accent">-</p>
+                        <p id="ascendantTraits" class="text-xs text-text-secondary mt-1">Calculating...</p>
+                    </div>
+
+                    <!-- Planetary Chart -->
+                    <div class="bg-surface/40 rounded-xl p-4">
+                        <canvas id="planetChart" height="120"></canvas>
+                        <p class="text-xs text-center text-text-secondary mt-2">Planetary Strengths in Your Chart</p>
+                    </div>
+                </div>
+
+                <!-- Current Planetary Period -->
+                <div class="bg-surface/60 rounded-lg p-4 border-l-4 border-secondary">
+                    <div class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-secondary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <div>
+                            <p class="text-sm text-text-primary font-medium mb-1">Current Planetary Period (Dasha)</p>
+                            <p id="currentDasha" class="text-xs text-text-secondary">Calculating your planetary period...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Camera Scanner Section -->
+        <section id="cameraSection" class="mb-8 hidden">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-2xl p-6 cosmic-shadow-lg border border-cosmic">
+                <!-- Instructions -->
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011 1v8a3 3 0 01-3 3m-8-3a3 3 0 01-3-3V2a1 1 0 011-1m0 0h8m-8 0v2"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-heading font-semibold text-text-primary mb-2">Position Your Palm</h2>
+                    <p class="text-text-secondary">Place your palm flat against the screen with fingers spread</p>
+                </div>
+
+                <!-- Camera Viewfinder -->
+                <div class="relative bg-background/50 rounded-xl overflow-hidden mb-6" style="aspect-ratio: 4/3;">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <!-- Palm Outline Guide -->
+                        <div class="relative">
+                            <svg class="w-48 h-64 text-primary/30" fill="none" stroke="currentColor" viewBox="0 0 200 280">
+                                <!-- Palm outline -->
+                                <path stroke-width="2" stroke-dasharray="5,5" d="M50 50 Q50 30 70 30 L130 30 Q150 30 150 50 L150 180 Q150 200 130 200 L120 200 L120 220 L110 220 L110 200 L90 200 L90 220 L80 220 L80 200 L70 200 Q50 200 50 180 Z"/>
+                                <!-- Finger guides -->
+                                <line x1="80" y1="30" x2="80" y2="10" stroke-width="2" stroke-dasharray="3,3"/>
+                                <line x1="100" y1="30" x2="100" y2="5" stroke-width="2" stroke-dasharray="3,3"/>
+                                <line x1="120" y1="30" x2="120" y2="10" stroke-width="2" stroke-dasharray="3,3"/>
+                                <line x1="140" y1="40" x2="140" y2="15" stroke-width="2" stroke-dasharray="3,3"/>
+                            </svg>
+                            
+                            <!-- Scanning Animation -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-2 h-full bg-gradient-to-b from-transparent via-accent to-transparent opacity-50 animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Camera Controls Overlay -->
+                    <div class="absolute bottom-4 left-0 right-0 flex justify-center">
+                        <button id="captureBtn" class="w-16 h-16 bg-primary rounded-full flex items-center justify-center cosmic-shadow-lg hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hand Selection -->
+                <div class="flex justify-center space-x-4 mb-6">
+                    <button id="leftHandBtn" class="flex items-center space-x-2 px-4 py-2 bg-primary/20 text-primary rounded-lg border border-primary/30">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011 1v8a3 3 0 01-3 3m-8-3a3 3 0 01-3-3V2a1 1 0 011-1m0 0h8m-8 0v2"/>
+                        </svg>
+                        <span class="text-sm font-medium">Left Hand</span>
+                    </button>
+                    <button id="rightHandBtn" class="flex items-center space-x-2 px-4 py-2 bg-surface/60 text-text-secondary rounded-lg border border-cosmic">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011 1v8a3 3 0 01-3 3m-8-3a3 3 0 01-3-3V2a1 1 0 011-1m0 0h8m-8 0v2"/>
+                        </svg>
+                        <span class="text-sm font-medium">Right Hand</span>
+                    </button>
+                </div>
+
+                <!-- Tips -->
+                <div class="bg-accent-900/20 rounded-lg p-4 border-l-4 border-accent">
+                    <div class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-accent mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <div>
+                            <p class="text-sm text-text-primary font-medium mb-1">Scanning Tips</p>
+                            <ul class="text-xs text-text-secondary space-y-1">
+                                <li>• Ensure good lighting for accurate analysis</li>
+                                <li>• Keep your palm flat and fingers spread</li>
+                                <li>• Hold steady for 3-5 seconds during capture</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analysis Results Section -->
+        <section id="resultsSection" class="hidden">
+            <!-- Scanned Palm Image -->
+            <div class="bg-surface/60 backdrop-blur-sm rounded-2xl p-6 cosmic-shadow-lg border border-cosmic mb-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-heading font-semibold text-text-primary">Palm Analysis Complete</h2>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-success rounded-full animate-pulse"></div>
+                        <span class="text-sm text-success font-medium">95% Confidence</span>
+                    </div>
+                </div>
+
+                <!-- Palm Image with Annotations -->
+                <div class="relative bg-background/30 rounded-xl overflow-hidden mb-6" style="aspect-ratio: 3/4; max-height: 400px;">
+                    <img id="scannedPalmImage" src="" alt="Scanned palm" class="w-full h-full object-cover" />
+                    
+                    <!-- Interactive Hotspots -->
+                    <div class="absolute inset-0">
+                        <!-- Heart Line -->
+                        <button class="absolute top-1/4 left-1/4 w-4 h-4 bg-error rounded-full border-2 border-white animate-pulse" data-line="heart"></button>
+                        <!-- Head Line -->
+                        <button class="absolute top-2/5 left-1/3 w-4 h-4 bg-primary rounded-full border-2 border-white animate-pulse" data-line="head"></button>
+                        <!-- Life Line -->
+                        <button class="absolute top-1/3 left-1/5 w-4 h-4 bg-success rounded-full border-2 border-white animate-pulse" data-line="life"></button>
+                        <!-- Fate Line -->
+                        <button class="absolute top-1/2 left-1/2 w-4 h-4 bg-accent rounded-full border-2 border-white animate-pulse" data-line="fate"></button>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="flex justify-center space-x-4">
+                    <button class="flex items-center space-x-2 px-4 py-2 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Share</span>
+                    </button>
+                    <button class="flex items-center space-x-2 px-4 py-2 bg-secondary/20 text-secondary rounded-lg hover:bg-secondary/30 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        <span class="text-sm font-medium">Save</span>
+                    </button>
+                    <button id="rescanBtn" class="flex items-center space-x-2 px-4 py-2 bg-accent/20 text-accent rounded-lg hover:bg-accent/30 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                        <span class="text-sm font-medium">Rescan</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Analysis Categories -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <!-- Love & Relationships -->
+                <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-error to-error-600 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-semibold text-text-primary">Love & Relationships</h3>
+                            <p class="text-sm text-text-secondary">Heart Line & Venus Analysis</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-error-900/20 rounded-lg p-3 border-l-4 border-error">
+                            <p class="text-sm text-text-primary font-medium mb-1">Emotional Nature (Moon Sign: <span id="moonSign">-</span>)</p>
+                            <p id="emotionalNatureText" class="text-xs text-text-secondary">Calculating your emotional profile based on palm lines and astrology...</p>
+                        </div>
+                        <div class="bg-error-900/20 rounded-lg p-3 border-l-4 border-error">
+                            <p class="text-sm text-text-primary font-medium mb-1">Venus Position & Relationship Patterns</p>
+                            <p id="venusAnalysisText" class="text-xs text-text-secondary">Analyzing your relationship tendencies...</p>
+                        </div>
+                        <div class="bg-error-900/20 rounded-lg p-3 border-l-4 border-error">
+                            <p class="text-sm text-text-primary font-medium mb-1">Current Transit Prediction</p>
+                            <p id="lovePredictionText" class="text-xs text-text-secondary">Checking planetary influences on your love life...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Career & Finance -->
+                <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-accent to-accent-600 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-semibold text-text-primary">Career & Finance</h3>
+                            <p class="text-sm text-text-secondary">Fate Line & 10th House Analysis</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-accent-900/20 rounded-lg p-3 border-l-4 border-accent">
+                            <p class="text-sm text-text-primary font-medium mb-1">Career Path (Saturn in <span id="saturnPosition">-</span> house)</p>
+                            <p id="careerPathText" class="text-xs text-text-secondary">Analyzing your career potential...</p>
+                        </div>
+                        <div class="bg-accent-900/20 rounded-lg p-3 border-l-4 border-accent">
+                            <p class="text-sm text-text-primary font-medium mb-1">Financial Prospects (2nd & 11th houses)</p>
+                            <p id="financeText" class="text-xs text-text-secondary">Evaluating your financial patterns...</p>
+                        </div>
+                        <div class="bg-accent-900/20 rounded-lg p-3 border-l-4 border-accent">
+                            <p class="text-sm text-text-primary font-medium mb-1">Current Career Transit</p>
+                            <p id="careerPredictionText" class="text-xs text-text-secondary">Checking planetary influences on your career...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health & Longevity -->
+                <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-success to-success-600 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-semibold text-text-primary">Health & Longevity</h3>
+                            <p class="text-sm text-text-secondary">Life Line & 6th House Analysis</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-success-900/20 rounded-lg p-3 border-l-4 border-success">
+                            <p class="text-sm text-text-primary font-medium mb-1">Vitality (Mars in <span id="marsPosition">-</span> house)</p>
+                            <p id="vitalityText" class="text-xs text-text-secondary">Analyzing your life line and health indicators...</p>
+                        </div>
+                        <div class="bg-success-900/20 rounded-lg p-3 border-l-4 border-success">
+                            <p class="text-sm text-text-primary font-medium mb-1">Health Recommendations</p>
+                            <p id="healthRecommendationsText" class="text-xs text-text-secondary">Preparing personalized health suggestions...</p>
+                        </div>
+                        <div class="bg-success-900/20 rounded-lg p-3 border-l-4 border-success">
+                            <p class="text-sm text-text-primary font-medium mb-1">Health Forecast</p>
+                            <p id="healthForecastText" class="text-xs text-text-secondary">Checking planetary influences on your health...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spiritual Path -->
+                <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-secondary to-secondary-600 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-semibold text-text-primary">Spiritual Path</h3>
+                            <p class="text-sm text-text-secondary">Intuition Line & Jupiter Analysis</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-secondary-900/20 rounded-lg p-3 border-l-4 border-secondary">
+                            <p class="text-sm text-text-primary font-medium mb-1">Spiritual Inclination (Jupiter in <span id="jupiterPosition">-</span> house)</p>
+                            <p id="spiritualText" class="text-xs text-text-secondary">Analyzing your spiritual markers...</p>
+                        </div>
+                        <div class="bg-secondary-900/20 rounded-lg p-3 border-l-4 border-secondary">
+                            <p class="text-sm text-text-primary font-medium mb-1">Recommended Practices</p>
+                            <p id="practicesText" class="text-xs text-text-secondary">Preparing spiritual recommendations...</p>
+                        </div>
+                        <div class="bg-secondary-900/20 rounded-lg p-3 border-l-4 border-secondary">
+                            <p class="text-sm text-text-primary font-medium mb-1">Spiritual Awakening</p>
+                            <p id="awakeningText" class="text-xs text-text-secondary">Checking upcoming spiritual opportunities...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Line Analysis -->
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic mb-8">
+                <h2 class="text-xl font-heading font-semibold text-text-primary mb-6">Detailed Line Analysis</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Major Lines -->
+                    <div>
+                        <h3 class="font-heading font-semibold text-text-primary mb-4">Major Lines</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3 p-3 bg-background/30 rounded-lg">
+                                <div class="w-3 h-3 bg-error rounded-full mt-2"></div>
+                                <div>
+                                    <p class="text-sm font-medium text-text-primary">Heart Line (Venus Influence)</p>
+                                    <p class="text-xs text-text-secondary">Length: - | Depth: - | Quality: -</p>
+                                    <p class="text-xs text-text-secondary mt-1">Analyzing emotional nature and relationship patterns...</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3 p-3 bg-background/30 rounded-lg">
+                                <div class="w-3 h-3 bg-primary rounded-full mt-2"></div>
+                                <div>
+                                    <p class="text-sm font-medium text-text-primary">Head Line (Mercury Influence)</p>
+                                    <p class="text-xs text-text-secondary">Length: - | Depth: - | Quality: -</p>
+                                    <p class="text-xs text-text-secondary mt-1">Analyzing intellectual capacity and communication style...</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3 p-3 bg-background/30 rounded-lg">
+                                <div class="w-3 h-3 bg-success rounded-full mt-2"></div>
+                                <div>
+                                    <p class="text-sm font-medium text-text-primary">Life Line (Mars Influence)</p>
+                                    <p class="text-xs text-text-secondary">Length: - | Depth: - | Quality: -</p>
+                                    <p class="text-xs text-text-secondary mt-1">Analyzing vitality and major life changes...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Minor Lines -->
+                    <div>
+                        <h3 class="font-heading font-semibold text-text-primary mb-4">Minor Lines (Planetary Influences)</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3 p-3 bg-background/30 rounded-lg">
+                                <div class="w-3 h-3 bg-accent rounded-full mt-2"></div>
+                                <div>
+                                    <p class="text-sm font-medium text-text-primary">Fate Line (Saturn Influence)</p>
+                                    <p class="text-xs text-text-secondary">Analyzing...</p>
+                                    <p class="text-xs text-text-secondary mt-1">Determining career path and life purpose...</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3 p-3 bg-background/30 rounded-lg">
+                                <div class="w-3 h-3 bg-secondary rounded-full mt-2"></div>
+                                <div>
+                                    <p class="text-sm font-medium text-text-primary">Sun Line (Sun Influence)</p>
+                                    <p class="text-xs text-text-secondary">Analyzing...</p>
+                                    <p class="text-xs text-text-secondary mt-1">Determining potential for success and recognition...</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3 p-3 bg-background/30 rounded-lg">
+                                <div class="w-3 h-3 bg-warning rounded-full mt-2"></div>
+                                <div>
+                                    <p class="text-sm font-medium text-text-primary">Mercury Line (Mercury Influence)</p>
+                                    <p class="text-xs text-text-secondary">Analyzing...</p>
+                                    <p class="text-xs text-text-secondary mt-1">Determining communication skills and business acumen...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spiritual Remedies -->
+            <div class="bg-gradient-to-br from-secondary-900/30 to-primary-900/20 rounded-xl p-6 cosmic-shadow border border-cosmic">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-gradient-to-br from-accent to-accent-600 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-heading font-semibold text-text-primary">Recommended Remedies</h2>
+                        <p class="text-sm text-text-secondary">Based on your palm analysis & planetary positions</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-surface/40 rounded-lg p-4 text-center">
+                        <div class="w-12 h-12 bg-primary/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                            <span class="text-primary font-bold">ॐ</span>
+                        </div>
+                        <p class="text-sm font-medium text-text-primary mb-1">Daily Mantra</p>
+                        <p id="recommendedMantra" class="text-xs text-text-secondary">Calculating...</p>
+                        <p class="text-xs text-accent mt-1">108 times daily</p>
+                    </div>
+
+                    <div class="bg-surface/40 rounded-lg p-4 text-center">
+                        <div class="w-12 h-12 bg-success/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                            <div class="w-6 h-6 bg-success rounded-full"></div>
+                        </div>
+                        <p class="text-sm font-medium text-text-primary mb-1">Lucky Color</p>
+                        <p id="luckyColor" class="text-xs text-text-secondary">Calculating...</p>
+                        <p id="luckyDay" class="text-xs text-success mt-1">Especially on...</p>
+                    </div>
+
+                    <div class="bg-surface/40 rounded-lg p-4 text-center">
+                        <div class="w-12 h-12 bg-accent/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <p class="text-sm font-medium text-text-primary mb-1">Gemstone</p>
+                        <p id="recommendedGemstone" class="text-xs text-text-secondary">Calculating...</p>
+                        <p class="text-xs text-accent mt-1">For planetary strength</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-cosmic border-t border-cosmic z-50">
+        <div class="max-w-md mx-auto px-4 py-2">
+            <div class="flex items-center justify-around">
+                <!-- Home -->
+                <a href="dashboard_home.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span class="text-xs font-medium">Home</span>
+                </a>
+
+                <!-- Kundali -->
+                <a href="ai_kundali_generator.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                    </svg>
+                    <span class="text-xs font-medium">Kundali</span>
+                </a>
+
+                <!-- Palm Reading -->
+                <a href="palm_reading_scanner.html" class="flex flex-col items-center py-2 px-3 text-primary">
+                    <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011 1v8a3 3 0 01-3 3m-8-3a3 3 0 01-3-3V2a1 1 0 011-1m0 0h8m-8 0v2"/>
+                    </svg>
+                    <span class="text-xs font-medium">Palm Reading</span>
+                </a>
+
+                <!-- Progress -->
+                <a href="spiritual_progress_tracker.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    <span class="text-xs font-medium">Progress</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <script src="../js/app.js"></script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

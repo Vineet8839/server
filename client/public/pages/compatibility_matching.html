@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compatibility Matching - ASTRO VANBA</title>
+    <link rel="stylesheet" href="../css/main.css" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fastrovanb4866back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen font-body">
+    <!-- Top Header -->
+    <header class="bg-surface/80 backdrop-blur-cosmic border-b border-cosmic sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Title -->
+                <div class="flex items-center space-x-3">
+                    <a href="dashboard_home.html" class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </a>
+                    <div>
+                        <h1 class="text-lg font-heading font-semibold text-text-primary">Compatibility Matching</h1>
+                        <p class="text-sm text-text-secondary">Guna Milan Analysis</p>
+                    </div>
+                </div>
+                
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-3">
+                    <!-- Help -->
+                    <button class="p-2 text-text-secondary hover:text-primary transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Share -->
+                    <button class="p-2 bg-primary/20 text-primary rounded-full hover:bg-primary/30 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-6 pb-24">
+        <!-- Hero Section -->
+        <section class="mb-8">
+            <div class="bg-gradient-to-br from-error-900/30 to-accent-900/20 rounded-2xl p-6 cosmic-shadow-lg border border-cosmic relative overflow-hidden">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-10">
+                    <svg class="w-full h-full" viewBox="0 0 400 200" fill="none">
+                        <path d="M100 100 Q150 50 200 100 T300 100" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="30" stroke="currentColor" stroke-width="1" fill="none"/>
+                        <circle cx="300" cy="100" r="30" stroke="currentColor" stroke-width="1" fill="none"/>
+                        <path d="M130 100 L270 100" stroke="currentColor" stroke-width="1"/>
+                    </svg>
+                </div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h2 class="text-2xl font-heading font-bold text-text-primary mb-2">Find Your Perfect Match</h2>
+                            <p class="text-text-secondary">Discover relationship harmony through ancient Vedic compatibility analysis</p>
+                        </div>
+                        <div class="hidden md:flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-error to-error-600 rounded-full flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                </svg>
+                            </div>
+                            <div class="text-4xl font-bold text-accent">+</div>
+                            <div class="w-16 h-16 bg-gradient-to-br from-primary to-primary-600 rounded-full flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-4 mt-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent mb-1">36</div>
+                            <p class="text-xs text-text-secondary">Guna Points</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-success mb-1">8</div>
+                            <p class="text-xs text-text-secondary">Factors</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-primary mb-1">100%</div>
+                            <p class="text-xs text-text-secondary">Accuracy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partner Details Form -->
+        <section class="mb-8">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl cosmic-shadow border border-cosmic/30">
+                <!-- Form Header -->
+                <div class="p-6 border-b border-cosmic/30">
+                    <h3 class="text-lg font-heading font-semibold text-text-primary mb-2">Enter Partner Details</h3>
+                    <p class="text-text-secondary text-sm">Provide birth information for both partners to calculate compatibility</p>
+                </div>
+
+                <!-- Partner Tabs -->
+                <div class="flex border-b border-cosmic/30">
+                    <button id="partner1-tab" class="flex-1 py-4 px-6 text-center font-medium transition-colors bg-error/20 text-error border-b-2 border-error">
+                        <div class="flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                            <span>Partner 1</span>
+                        </div>
+                    </button>
+                    <button id="partner2-tab" class="flex-1 py-4 px-6 text-center font-medium transition-colors text-text-secondary hover:text-primary">
+                        <div class="flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                            <span>Partner 2</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Form Content -->
+                <div class="p-6">
+                    <form id="compatibility-form" class="space-y-6">
+                        <!-- Partner 1 Form -->
+                        <div id="partner1-form" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">Full Name</label>
+                                    <input type="text" name="partner1_name" placeholder="Enter full name" class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary placeholder-text-secondary focus:border-error focus:outline-none transition-colors" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">Gender</label>
+                                    <select name="partner1_gender" class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary focus:border-error focus:outline-none transition-colors">
+                                        <option value>Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">Date of Birth</label>
+                                    <input type="date" name="partner1_date" class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary focus:border-error focus:outline-none transition-colors" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">Time of Birth</label>
+                                    <input type="time" name="partner1_time" class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary focus:border-error focus:outline-none transition-colors" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">Place of Birth</label>
+                                    <input type="text" name="partner1_place" placeholder="City, State" class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary placeholder-text-secondary focus:border-error focus:outline-none transition-colors" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Partner 2 Form (Hidden by default) -->
+                        <div id="partner2-form" class="space-y-4 hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">Full Name</label>
+                                    <input type="text" name="partner2_name" placeholder="Enter full name" class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none transition-colors" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">Gender</label>
+                                    <select name="partner2_gender" class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary focus:border-primary focus:outline-none transition-colors">
+                                        <option value>Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">Date of Birth</label>
+                                    <input type="date" name="partner2_date" class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary focus:border-primary focus:outline-none transition-colors" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">Time of Birth</label>
+                                    <input type="time" name="partner2_time" class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary focus:border-primary focus:outline-none transition-colors" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">Place of Birth</label>
+                                    <input type="text" name="partner2_place" placeholder="City, State" class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none transition-colors" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button type="button" id="calculate-btn" class="flex-1 bg-gradient-to-r from-error to-primary text-white font-semibold py-3 px-6 rounded-lg hover:from-error-600 hover:to-primary-600 transition-all duration-300 cosmic-shadow">
+                                <div class="flex items-center justify-center space-x-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                    </svg>
+                                    <span>Calculate Compatibility</span>
+                                </div>
+                            </button>
+                            <button type="button" class="px-6 py-3 border border-cosmic text-text-secondary hover:text-text-primary hover:border-primary transition-colors rounded-lg">
+                                Save for Later
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Compatibility Results (Hidden by default, shown after calculation) -->
+        <section id="results-section" class="mb-8 hidden">
+            <!-- Overall Compatibility Score -->
+            <div class="bg-gradient-to-br from-success-900/30 to-accent-900/20 rounded-2xl p-6 cosmic-shadow-lg border border-cosmic mb-6">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-heading font-bold text-text-primary mb-2">Compatibility Analysis</h3>
+                    <p class="text-text-secondary">Rajesh & Priya • Guna Milan Report</p>
+                </div>
+                
+                <div class="flex items-center justify-center mb-6">
+                    <div class="relative w-32 h-32">
+                        <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="none"/>
+                            <circle cx="60" cy="60" r="50" stroke="url(#gradient)" stroke-width="8" fill="none" stroke-dasharray="314" stroke-dashoffset="94" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#4ADE80"/>
+                                    <stop offset="100%" style="stop-color:#FFD700"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-success">28</div>
+                                <div class="text-xs text-text-secondary">out of 36</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mb-6">
+                    <div class="text-2xl font-bold text-success mb-2">Excellent Match (78%)</div>
+                    <p class="text-text-secondary">This union promises harmony, prosperity, and spiritual growth</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center p-3 bg-surface/40 rounded-lg">
+                        <div class="text-lg font-bold text-success mb-1">92%</div>
+                        <p class="text-xs text-text-secondary">Emotional</p>
+                    </div>
+                    <div class="text-center p-3 bg-surface/40 rounded-lg">
+                        <div class="text-lg font-bold text-accent mb-1">85%</div>
+                        <p class="text-xs text-text-secondary">Physical</p>
+                    </div>
+                    <div class="text-center p-3 bg-surface/40 rounded-lg">
+                        <div class="text-lg font-bold text-primary mb-1">76%</div>
+                        <p class="text-xs text-text-secondary">Spiritual</p>
+                    </div>
+                    <div class="text-center p-3 bg-surface/40 rounded-lg">
+                        <div class="text-lg font-bold text-secondary mb-1">88%</div>
+                        <p class="text-xs text-text-secondary">Family</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Guna Analysis -->
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl cosmic-shadow border border-cosmic/30 mb-6">
+                <div class="p-6 border-b border-cosmic/30">
+                    <h3 class="text-lg font-heading font-semibold text-text-primary">Detailed Guna Analysis</h3>
+                    <p class="text-text-secondary text-sm">Eight-factor compatibility breakdown</p>
+                </div>
+                
+                <div class="p-6 space-y-4">
+                    <!-- Varna -->
+                    <div class="border border-cosmic/30 rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center">
+                                    <span class="text-success font-bold text-sm">1</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-text-primary">Varna (Caste)</h4>
+                                    <p class="text-xs text-text-secondary">Social compatibility</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-success font-bold">1/1</div>
+                                <div class="text-xs text-text-secondary">Perfect</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-text-secondary">Both partners belong to compatible social backgrounds, ensuring mutual respect and understanding.</p>
+                    </div>
+
+                    <!-- Vashya -->
+                    <div class="border border-cosmic/30 rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center">
+                                    <span class="text-success font-bold text-sm">2</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-text-primary">Vashya (Dominance)</h4>
+                                    <p class="text-xs text-text-secondary">Power dynamics</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-success font-bold">2/2</div>
+                                <div class="text-xs text-text-secondary">Excellent</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-text-secondary">Natural leadership balance creates harmony without power struggles.</p>
+                    </div>
+
+                    <!-- Tara -->
+                    <div class="border border-cosmic/30 rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
+                                    <span class="text-accent font-bold text-sm">3</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-text-primary">Tara (Birth Star)</h4>
+                                    <p class="text-xs text-text-secondary">Destiny compatibility</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-accent font-bold">2/3</div>
+                                <div class="text-xs text-text-secondary">Good</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-text-secondary">Birth stars indicate favorable destiny alignment with minor adjustments needed.</p>
+                    </div>
+
+                    <!-- Show More Button -->
+                    <button class="w-full py-3 text-primary hover:text-primary-400 transition-colors border border-cosmic/30 rounded-lg">
+                        <div class="flex items-center justify-center space-x-2">
+                            <span>Show All 8 Factors</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Manglik Analysis -->
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl cosmic-shadow border border-cosmic/30 mb-6">
+                <div class="p-6 border-b border-cosmic/30">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-warning/20 rounded-full flex items-center justify-center">
+                            <svg class="w-4 h-4 text-warning" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-heading font-semibold text-text-primary">Manglik Dosha Analysis</h3>
+                            <p class="text-text-secondary text-sm">Mars influence assessment</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="bg-warning-900/20 border border-warning/30 rounded-lg p-4 mb-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-warning/20 rounded-full flex items-center justify-center mt-1">
+                                <div class="w-2 h-2 bg-warning rounded-full"></div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-text-primary mb-2">Partial Manglik Dosha Detected</h4>
+                                <p class="text-sm text-text-secondary mb-3">Partner 1 has mild Mars influence that can be balanced through proper remedies.</p>
+                                
+                                <div class="space-y-2">
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm text-text-primary">Chant Hanuman Chalisa daily</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm text-text-primary">Wear red coral gemstone</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm text-text-primary">Perform Mars puja on Tuesdays</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Auspicious Dates -->
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl cosmic-shadow border border-cosmic/30">
+                <div class="p-6 border-b border-cosmic/30">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center">
+                            <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-heading font-semibold text-text-primary">Auspicious Marriage Dates</h3>
+                            <p class="text-text-secondary text-sm">Recommended ceremony timing</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="border border-success/30 rounded-lg p-4 bg-success-900/10">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-text-primary">December 15, 2025</h4>
+                                <span class="text-xs bg-success/20 text-success px-2 py-1 rounded">Best</span>
+                            </div>
+                            <p class="text-sm text-text-secondary mb-2">Monday • Pushya Nakshatra</p>
+                            <p class="text-xs text-text-secondary">Ideal time: 10:30 AM - 12:15 PM</p>
+                        </div>
+                        
+                        <div class="border border-accent/30 rounded-lg p-4 bg-accent-900/10">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-text-primary">January 8, 2026</h4>
+                                <span class="text-xs bg-accent/20 text-accent px-2 py-1 rounded">Good</span>
+                            </div>
+                            <p class="text-sm text-text-secondary mb-2">Thursday • Rohini Nakshatra</p>
+                            <p class="text-xs text-text-secondary">Ideal time: 11:45 AM - 1:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Saved Reports -->
+        <section class="mb-8">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl cosmic-shadow border border-cosmic/30">
+                <div class="p-6 border-b border-cosmic/30">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-heading font-semibold text-text-primary">Saved Reports</h3>
+                            <p class="text-text-secondary text-sm">Your previous compatibility analyses</p>
+                        </div>
+                        <button class="text-primary hover:text-primary-400 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 border border-cosmic/30 rounded-lg hover:border-primary/50 transition-colors cursor-pointer">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-error to-primary rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-text-primary">Rajesh & Priya</h4>
+                                    <p class="text-sm text-text-secondary">28/36 points • Excellent Match</p>
+                                    <p class="text-xs text-text-secondary">Analyzed on Aug 10, 2025</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="p-2 text-text-secondary hover:text-primary transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                    </svg>
+                                </button>
+                                <svg class="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center py-8 text-text-secondary">
+                            <svg class="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <p class="text-sm">No more saved reports</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-cosmic border-t border-cosmic z-50">
+        <div class="max-w-md mx-auto px-4 py-2">
+            <div class="flex items-center justify-around">
+                <!-- Home -->
+                <a href="dashboard_home.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span class="text-xs font-medium">Home</span>
+                </a>
+
+                <!-- Kundali -->
+                <a href="ai_kundali_generator.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                    </svg>
+                    <span class="text-xs font-medium">Kundali</span>
+                </a>
+
+                <!-- Compatibility -->
+                <a href="compatibility_matching.html" class="flex flex-col items-center py-2 px-3 text-error">
+                    <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                    <span class="text-xs font-medium">Match</span>
+                </a>
+
+                <!-- Progress -->
+                <a href="spiritual_progress_tracker.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    <span class="text-xs font-medium">Progress</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- JavaScript for Tab Switching and Form Interaction -->
+    <script>
+        // Tab switching functionality
+        const partner1Tab = document.getElementById('partner1-tab');
+        const partner2Tab = document.getElementById('partner2-tab');
+        const partner1Form = document.getElementById('partner1-form');
+        const partner2Form = document.getElementById('partner2-form');
+        const calculateBtn = document.getElementById('calculate-btn');
+        const resultsSection = document.getElementById('results-section');
+
+        partner1Tab.addEventListener('click', () => {
+            partner1Tab.classList.add('bg-error/20', 'text-error', 'border-b-2', 'border-error');
+            partner1Tab.classList.remove('text-text-secondary');
+            partner2Tab.classList.remove('bg-primary/20', 'text-primary', 'border-b-2', 'border-primary');
+            partner2Tab.classList.add('text-text-secondary');
+            
+            partner1Form.classList.remove('hidden');
+            partner2Form.classList.add('hidden');
+        });
+
+        partner2Tab.addEventListener('click', () => {
+            partner2Tab.classList.add('bg-primary/20', 'text-primary', 'border-b-2', 'border-primary');
+            partner2Tab.classList.remove('text-text-secondary');
+            partner1Tab.classList.remove('bg-error/20', 'text-error', 'border-b-2', 'border-error');
+            partner1Tab.classList.add('text-text-secondary');
+            
+            partner2Form.classList.remove('hidden');
+            partner1Form.classList.add('hidden');
+        });
+
+        // Calculate compatibility
+        calculateBtn.addEventListener('click', () => {
+            // Simulate calculation delay
+            calculateBtn.innerHTML = '<div class="flex items-center justify-center space-x-2"><svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Calculating...</span></div>';
+            
+            setTimeout(() => {
+                calculateBtn.innerHTML = '<div class="flex items-center justify-center space-x-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg><span>Calculate Compatibility</span></div>';
+                resultsSection.classList.remove('hidden');
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        });
+    </script>
+<script id="dhws-dataInjector" src="../dhws-data-injector.js"></script>
+</body>
+</html>

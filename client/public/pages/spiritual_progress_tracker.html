@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spiritual Progress Tracker - ASTRO VANBA</title>
+    <link rel="stylesheet" href="../css/main.css" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fastrovanb4866back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen font-body">
+    <!-- Top Header -->
+    <header class="bg-surface/80 backdrop-blur-cosmic border-b border-cosmic sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-heading font-semibold text-text-primary">Spiritual Progress</h1>
+                        <p class="text-sm text-text-secondary">Track your journey</p>
+                    </div>
+                </div>
+                
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-3">
+                    <!-- Settings -->
+                    <button class="p-2 text-text-secondary hover:text-primary transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Share Progress -->
+                    <button class="p-2 bg-primary/20 text-primary rounded-full hover:bg-primary/30 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-6 pb-24">
+        <!-- Current Level & Progress -->
+        <section class="mb-8">
+            <div class="bg-gradient-to-br from-secondary-900/50 to-primary-900/30 rounded-2xl p-6 cosmic-shadow-lg border border-cosmic">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent to-accent-600 rounded-full flex items-center justify-center cosmic-pulse">
+                            <span class="text-2xl font-bold text-white">7</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-heading font-bold text-text-primary">Spiritual Seeker</h2>
+                            <p class="text-text-secondary">Level 7 • 2,450 XP</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm text-text-secondary">Next Level</p>
+                        <p class="text-lg font-semibold text-accent">550 XP to go</p>
+                    </div>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="mb-4">
+                    <div class="flex justify-between text-sm text-text-secondary mb-2">
+                        <span>Level 7</span>
+                        <span>Level 8</span>
+                    </div>
+                    <div class="w-full bg-surface rounded-full h-3">
+                        <div class="bg-gradient-to-r from-primary to-accent h-3 rounded-full relative" style="width: 82%">
+                            <div class="absolute right-0 top-0 w-3 h-3 bg-accent rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Today's Progress -->
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <div class="w-10 h-10 bg-success/20 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-text-secondary">Today's XP</p>
+                        <p class="text-sm font-semibold text-success">+125</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-10 h-10 bg-primary/20 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-text-secondary">Streak</p>
+                        <p class="text-sm font-semibold text-primary">12 days</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-10 h-10 bg-accent/20 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-text-secondary">Badges</p>
+                        <p class="text-sm font-semibold text-accent">23</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievement Categories -->
+        <section class="mb-8">
+            <h2 class="text-xl font-heading font-semibold text-text-primary mb-4">Achievement Categories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Mantra Completion -->
+                <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/50">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-semibold text-text-primary">Mantra Mastery</h3>
+                                <p class="text-sm text-text-secondary">Daily chanting progress</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-primary">108/108</p>
+                            <p class="text-xs text-success">Complete</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Ganesha Mantra</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-16 bg-surface rounded-full h-2">
+                                    <div class="bg-success h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                                <span class="text-xs text-success">108</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Mahamrityunjaya</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-16 bg-surface rounded-full h-2">
+                                    <div class="bg-warning h-2 rounded-full" style="width: 65%"></div>
+                                </div>
+                                <span class="text-xs text-warning">70/108</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-cosmic/30">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Weekly Goal</span>
+                            <span class="text-sm font-semibold text-accent">756/756 ✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Astrological Learning -->
+                <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/50">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-gradient-to-br from-secondary to-secondary-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-semibold text-text-primary">Vedic Knowledge</h3>
+                                <p class="text-sm text-text-secondary">Learning modules</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-secondary">12/20</p>
+                            <p class="text-xs text-warning">In Progress</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Planetary Basics</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-16 bg-surface rounded-full h-2">
+                                    <div class="bg-success h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                                <span class="text-xs text-success">✓</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">House System</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-16 bg-surface rounded-full h-2">
+                                    <div class="bg-warning h-2 rounded-full" style="width: 75%"></div>
+                                </div>
+                                <span class="text-xs text-warning">9/12</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-cosmic/30">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Next: Nakshatras</span>
+                            <button class="text-sm text-secondary hover:text-secondary-400 transition-colors">
+                                Continue →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Remedy Implementation -->
+                <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/50">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-gradient-to-br from-accent to-accent-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-semibold text-text-primary">Remedy Practice</h3>
+                                <p class="text-sm text-text-secondary">Daily implementations</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-accent">5/7</p>
+                            <p class="text-xs text-success">Active</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Wear Green Today</span>
+                            <div class="w-6 h-6 bg-success rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Donate to Temple</span>
+                            <div class="w-6 h-6 bg-success rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Evening Meditation</span>
+                            <div class="w-6 h-6 bg-surface border-2 border-warning rounded-full"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-cosmic/30">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Consistency Rate</span>
+                            <span class="text-sm font-semibold text-success">85%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spiritual Milestones -->
+                <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/50">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-gradient-to-br from-success to-success-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-semibold text-text-primary">Major Milestones</h3>
+                                <p class="text-sm text-text-secondary">Spiritual achievements</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-success">8/12</p>
+                            <p class="text-xs text-accent">Unlocked</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-text-primary">First Kundali Generated</p>
+                                <p class="text-xs text-text-secondary">Unlocked premium features</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-text-primary">30-Day Streak Master</p>
+                                <p class="text-xs text-text-secondary">Extended AI chat time</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-surface border-2 border-warning rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-text-secondary">Vedic Scholar</p>
+                                <p class="text-xs text-text-secondary">Complete all learning modules</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Activity Log -->
+        <section class="mb-8">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/30">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-heading font-semibold text-text-primary">Today's Activities</h2>
+                    <button class="text-sm text-primary hover:text-primary-400 transition-colors">
+                        View All →
+                    </button>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-3 bg-success-900/20 rounded-lg border-l-4 border-success">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-success/20 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-text-primary">Completed Ganesha Mantra</p>
+                                <p class="text-xs text-text-secondary">108 repetitions • +50 XP</p>
+                            </div>
+                        </div>
+                        <span class="text-xs text-text-secondary">9:30 AM</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between p-3 bg-primary-900/20 rounded-lg border-l-4 border-primary">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-text-primary">Read Daily Horoscope</p>
+                                <p class="text-xs text-text-secondary">Virgo guidance • +25 XP</p>
+                            </div>
+                        </div>
+                        <span class="text-xs text-text-secondary">8:15 AM</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between p-3 bg-accent-900/20 rounded-lg border-l-4 border-accent">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-text-primary">Followed Color Remedy</p>
+                                <p class="text-xs text-text-secondary">Wore green clothing • +30 XP</p>
+                            </div>
+                        </div>
+                        <span class="text-xs text-text-secondary">7:00 AM</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weekly Progress Calendar -->
+        <section class="mb-8">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/30">
+                <h2 class="text-lg font-heading font-semibold text-text-primary mb-4">Weekly Progress</h2>
+                
+                <div class="grid grid-cols-7 gap-2 mb-4">
+                    <div class="text-center">
+                        <p class="text-xs text-text-secondary mb-2">Mon</p>
+                        <div class="w-10 h-10 bg-success rounded-lg flex items-center justify-center mx-auto">
+                            <span class="text-xs font-bold text-white">9</span>
+                        </div>
+                        <div class="flex justify-center mt-1">
+                            <div class="w-2 h-2 bg-success rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-text-secondary mb-2">Tue</p>
+                        <div class="w-10 h-10 bg-success rounded-lg flex items-center justify-center mx-auto">
+                            <span class="text-xs font-bold text-white">10</span>
+                        </div>
+                        <div class="flex justify-center mt-1">
+                            <div class="w-2 h-2 bg-success rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-text-secondary mb-2">Wed</p>
+                        <div class="w-10 h-10 bg-success rounded-lg flex items-center justify-center mx-auto">
+                            <span class="text-xs font-bold text-white">11</span>
+                        </div>
+                        <div class="flex justify-center mt-1">
+                            <div class="w-2 h-2 bg-success rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-text-secondary mb-2">Thu</p>
+                        <div class="w-10 h-10 bg-success rounded-lg flex items-center justify-center mx-auto">
+                            <span class="text-xs font-bold text-white">12</span>
+                        </div>
+                        <div class="flex justify-center mt-1">
+                            <div class="w-2 h-2 bg-success rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-text-secondary mb-2">Fri</p>
+                        <div class="w-10 h-10 bg-success rounded-lg flex items-center justify-center mx-auto">
+                            <span class="text-xs font-bold text-white">13</span>
+                        </div>
+                        <div class="flex justify-center mt-1">
+                            <div class="w-2 h-2 bg-success rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-text-secondary mb-2">Sat</p>
+                        <div class="w-10 h-10 bg-success rounded-lg flex items-center justify-center mx-auto">
+                            <span class="text-xs font-bold text-white">14</span>
+                        </div>
+                        <div class="flex justify-center mt-1">
+                            <div class="w-2 h-2 bg-success rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-text-secondary mb-2">Sun</p>
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mx-auto border-2 border-accent">
+                            <span class="text-xs font-bold text-white">15</span>
+                        </div>
+                        <div class="flex justify-center mt-1">
+                            <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <p class="text-sm text-success font-medium">🔥 12-Day Streak!</p>
+                    <p class="text-xs text-text-secondary">Keep going to unlock the "Dedicated Seeker" badge</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goal Setting -->
+        <section class="mb-8">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/30">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-heading font-semibold text-text-primary">Personal Goals</h2>
+                    <button class="text-sm text-primary hover:text-primary-400 transition-colors">
+                        + Add Goal
+                    </button>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="p-4 bg-primary-900/20 rounded-lg border border-primary/30">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-medium text-text-primary">Complete 1000 Mantras</h3>
+                            <span class="text-sm text-primary">756/1000</span>
+                        </div>
+                        <div class="w-full bg-surface rounded-full h-2 mb-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: 76%"></div>
+                        </div>
+                        <p class="text-xs text-text-secondary">Target: End of August • 244 mantras to go</p>
+                    </div>
+                    
+                    <div class="p-4 bg-secondary-900/20 rounded-lg border border-secondary/30">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-medium text-text-primary">Master Vedic Basics</h3>
+                            <span class="text-sm text-secondary">12/20</span>
+                        </div>
+                        <div class="w-full bg-surface rounded-full h-2 mb-2">
+                            <div class="bg-secondary h-2 rounded-full" style="width: 60%"></div>
+                        </div>
+                        <p class="text-xs text-text-secondary">Target: September 15th • 8 modules remaining</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Achievements -->
+        <section class="mb-8">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/30">
+                <h2 class="text-lg font-heading font-semibold text-text-primary mb-4">Recent Achievements</h2>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-4 p-3 bg-accent-900/20 rounded-lg">
+                        <div class="w-12 h-12 bg-gradient-to-br from-accent to-accent-600 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-text-primary">Mantra Devotee</h3>
+                            <p class="text-sm text-text-secondary">Completed 500 mantras</p>
+                        </div>
+                        <span class="text-xs text-text-secondary">2 days ago</span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 p-3 bg-success-900/20 rounded-lg">
+                        <div class="w-12 h-12 bg-gradient-to-br from-success to-success-600 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-text-primary">Consistency Champion</h3>
+                            <p class="text-sm text-text-secondary">10-day practice streak</p>
+                        </div>
+                        <span class="text-xs text-text-secondary">1 week ago</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-cosmic border-t border-cosmic z-50">
+        <div class="max-w-md mx-auto px-4 py-2">
+            <div class="flex items-center justify-around">
+                <!-- Home -->
+                <a href="dashboard_home.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span class="text-xs font-medium">Home</span>
+                </a>
+
+                <!-- Kundali -->
+                <a href="ai_kundali_generator.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                    </svg>
+                    <span class="text-xs font-medium">Kundali</span>
+                </a>
+
+                <!-- Horoscope -->
+                <a href="daily_horoscope_remedies.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                    <span class="text-xs font-medium">Horoscope</span>
+                </a>
+
+                <!-- Progress -->
+                <a href="spiritual_progress_tracker.html" class="flex flex-col items-center py-2 px-3 text-primary">
+                    <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    <span class="text-xs font-medium">Progress</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Home - ASTRO VANBA</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fastrovanb4866back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vedic-astrology-calculator@latest/dist/calculator.min.js"></script>
+</head>
+<body class="bg-background min-h-screen font-body">
+    <!-- Top Header - Updated with Profile Link -->
+    <header class="bg-surface/80 backdrop-blur-cosmic border-b border-cosmic sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Greeting -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-heading font-semibold text-text-primary" id="userGreeting">नमस्ते, User</h1>
+                        <p class="text-sm text-text-secondary" id="currentDate">Thursday, 15 Aug 2025</p>
+                    </div>
+                </div>
+                
+                <!-- Right Actions - Updated with Profile -->
+                <div class="flex items-center space-x-3">
+                    <!-- Notification Bell -->
+                    <button id="notificationBtn" class="relative p-2 text-text-secondary hover:text-primary transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                        </svg>
+                        <span class="absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full animate-pulse"></span>
+                    </button>
+                    
+                    <!-- Profile Avatar -->
+                    <button id="profileBtn" class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/50 hover:border-primary transition-colors">
+                        <img src="https://ui-avatars.com/api/?name=User&background=6a5acd&color=fff" alt="Profile" id="profileAvatar" class="w-full h-full object-cover" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="fixed inset-0 bg-background/95 backdrop-blur-cosmic z-50 hidden overflow-y-auto">
+        <div class="min-h-screen flex items-start justify-center p-4 pt-20">
+            <div class="bg-surface/90 rounded-2xl p-8 max-w-md w-full cosmic-shadow-lg border border-cosmic">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-heading font-bold text-text-primary">Your Profile</h2>
+                    <button id="closeProfileModal" class="p-2 text-text-secondary hover:text-primary transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Profile Form -->
+                <form id="profileForm" class="space-y-6">
+                    <!-- Profile Picture -->
+                    <div class="flex flex-col items-center">
+                        <div class="relative mb-4">
+                            <img src="https://ui-avatars.com/api/?name=User&background=6a5acd&color=fff" alt="Profile" id="profilePreview" class="w-24 h-24 rounded-full object-cover border-2 border-primary/50" />
+                            <button type="button" id="changePhotoBtn" class="absolute bottom-0 right-0 bg-primary text-white p-1 rounded-full">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <input type="file" id="profilePhoto" accept="image/*" class="hidden" />
+                    </div>
+                    
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Full Name *</label>
+                        <input type="text" id="profileName" name="name" placeholder="Enter your full name" required class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary placeholder-text-secondary focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+                    </div>
+                    
+                    <!-- Birth Details -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Date of Birth -->
+                        <div>
+                            <label class="block text-sm font-medium text-text-primary mb-2">Date of Birth *</label>
+                            <input type="date" id="profileDob" name="dob" required class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+                        </div>
+                        
+                        <!-- Time of Birth -->
+                        <div>
+                            <label class="block text-sm font-medium text-text-primary mb-2">Time of Birth *</label>
+                            <div class="flex">
+                                <input type="time" id="profileTime" name="time" required class="flex-1 px-4 py-3 bg-background/50 border border-cosmic/50 rounded-l-lg text-text-primary focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+                                <select id="profileAmPm" name="amPm" required class="px-4 py-3 bg-background/50 border border-cosmic/50 rounded-r-lg text-text-primary focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Place of Birth -->
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Place of Birth *</label>
+                        <input type="text" id="profilePlace" name="place" placeholder="City, State, Country" required class="w-full px-4 py-3 bg-background/50 border border-cosmic/50 rounded-lg text-text-primary placeholder-text-secondary focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+                    </div>
+                    
+                    <!-- Calculated Info -->
+                    <div class="bg-surface/60 rounded-lg p-4 border border-cosmic/30">
+                        <h3 class="text-sm font-medium text-text-primary mb-2">Your Astrological Details</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <p class="text-xs text-text-secondary">Sun Sign</p>
+                                <p class="text-sm font-medium" id="profileSunSign">-</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-text-secondary">Moon Sign</p>
+                                <p class="text-sm font-medium" id="profileMoonSign">-</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-text-secondary">Ascendant</p>
+                                <p class="text-sm font-medium" id="profileAscendant">-</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-text-secondary">Numerology</p>
+                                <p class="text-sm font-medium" id="profileNumerology">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex space-x-3 pt-4">
+                        <button type="submit" class="flex-1 py-3 px-6 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-lg hover:from-primary-600 hover:to-accent-600 transition-all">
+                            Save Profile
+                        </button>
+                        <button type="button" id="cancelProfile" class="px-6 py-3 border border-cosmic text-text-primary hover:border-primary transition-colors rounded-lg">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-6 pb-24">
+        <!-- Today's Horoscope Card -->
+        <section class="mb-8">
+            <div class="bg-gradient-to-br from-secondary-900/50 to-primary-900/30 rounded-2xl p-6 cosmic-shadow-lg border border-cosmic cursor-pointer hover:scale-[1.02] transition-transform duration-300" onclick="window.location.href='daily_horoscope_remedies.html'">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h2 class="text-xl font-heading font-semibold text-text-primary mb-1">आज का राशिफल</h2>
+                        <p class="text-text-secondary">Virgo • कन्या राशि</p>
+                    </div>
+                    <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Virgo constellation" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                    </div>
+                </div>
+                
+                <p class="text-text-primary mb-4 leading-relaxed" id="dailyHoroscope">
+                    Today brings positive energy for career growth. Mercury's favorable position enhances communication skills. 
+                    Focus on important decisions after 2 PM for best results.
+                </p>
+                
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <div class="w-8 h-8 bg-success/20 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <div class="w-4 h-4 bg-success rounded-full"></div>
+                        </div>
+                        <p class="text-xs text-text-secondary">Lucky Color</p>
+                        <p class="text-sm font-medium text-success" id="luckyColor">Green</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-8 h-8 bg-accent/20 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <span class="text-accent font-bold text-sm" id="luckyNumber">7</span>
+                        </div>
+                        <p class="text-xs text-text-secondary">Lucky Number</p>
+                        <p class="text-sm font-medium text-accent">7</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-8 h-8 bg-primary/20 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-text-secondary">Mantra</p>
+                        <p class="text-sm font-medium text-primary">गणेश</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Cards Grid -->
+        <section class="mb-8">
+            <h2 class="text-xl font-heading font-semibold text-text-primary mb-4">Spiritual Services</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Kundali Generator -->
+                <a href="ai_kundali_generator.html" class="group">
+                    <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-4 cosmic-shadow border border-cosmic/50 hover:border-primary/50 transition-all duration-300 orbital-hover">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-text-primary mb-1">AI Kundali</h3>
+                        <p class="text-sm text-text-secondary">Generate birth chart</p>
+                    </div>
+                </a>
+
+                <!-- Voice AI Pandit -->
+                <div class="group cursor-pointer" onclick="startVoiceChat()">
+                    <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-4 cosmic-shadow border border-cosmic/50 hover:border-secondary/50 transition-all duration-300 orbital-hover">
+                        <div class="w-12 h-12 bg-gradient-to-br from-secondary to-secondary-600 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                        </svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-text-primary mb-1">AI Pandit</h3>
+                        <p class="text-sm text-text-secondary">Voice consultation</p>
+                    </div>
+                </div>
+
+                <!-- Palm Reading -->
+                <a href="palm_reading_scanner.html" class="group">
+                    <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-4 cosmic-shadow border border-cosmic/50 hover:border-accent/50 transition-all duration-300 orbital-hover">
+                        <div class="w-12 h-12 bg-gradient-to-br from-accent to-accent-600 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011 1v8a3 3 0 01-3 3m-8-3a3 3 0 01-3-3V2a1 1 0 011-1m0 0h8m-8 0v2"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-text-primary mb-1">Palm Reading</h3>
+                        <p class="text-sm text-text-secondary">Scan your palm</p>
+                    </div>
+                </a>
+
+                <!-- Compatibility -->
+                <a href="compatibility_matching.html" class="group">
+                    <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-4 cosmic-shadow border border-cosmic/50 hover:border-error/50 transition-all duration-300 orbital-hover">
+                        <div class="w-12 h-12 bg-gradient-to-br from-error to-error-600 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-text-primary mb-1">Compatibility</h3>
+                        <p class="text-sm text-text-secondary">Match making</p>
+                    </div>
+                </a>
+
+                <!-- Vastu Scanner -->
+                <div class="group cursor-pointer" onclick="openVastuScanner()">
+                    <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-4 cosmic-shadow border border-cosmic/50 hover:border-success/50 transition-all duration-300 orbital-hover">
+                        <div class="w-12 h-12 bg-gradient-to-br from-success to-success-600 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-text-primary mb-1">Vastu Scanner</h3>
+                        <p class="text-sm text-text-secondary">AR home scan</p>
+                    </div>
+                </div>
+
+                <!-- Muhurta Finder -->
+                <div class="group cursor-pointer" onclick="openMuhurtaFinder()">
+                    <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-4 cosmic-shadow border border-cosmic/50 hover:border-warning/50 transition-all duration-300 orbital-hover">
+                        <div class="w-12 h-12 bg-gradient-to-br from-warning to-warning-600 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-text-primary mb-1">Muhurta</h3>
+                        <p class="text-sm text-text-secondary">Auspicious timing</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Today's Spiritual Guidance -->
+        <section class="mb-8">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/30">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-heading font-semibold text-text-primary">Today's Spiritual Guidance</h2>
+                    <div class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-primary animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-primary-900/20 to-secondary-900/20 rounded-lg p-4 mb-4">
+                    <p class="text-text-primary leading-relaxed" id="spiritualGuidance">
+                        "Mercury's transit through your 10th house brings opportunities for professional advancement. 
+                        Practice the Ganesha mantra 108 times before important meetings. Wear green today to enhance 
+                        your natural wisdom and analytical abilities."
+                    </p>
+                </div>
+                
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-text-secondary">Based on current planetary transits</span>
+                    <button class="text-primary hover:text-primary-400 transition-colors" onclick="readMore()">
+                        Read More →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="mb-8">
+            <div class="grid grid-cols-3 gap-4">
+                <!-- Spiritual Level -->
+                <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-4 cosmic-shadow border border-cosmic/30 text-center cursor-pointer hover:scale-105 transition-transform" onclick="window.location.href='spiritual_progress_tracker.html'">
+                    <div class="w-12 h-12 bg-gradient-to-br from-accent to-accent-600 rounded-full mx-auto mb-2 flex items-center justify-center">
+                        <span class="text-white font-bold" id="spiritualLevel">7</span>
+                    </div>
+                    <p class="text-xs text-text-secondary mb-1">Spiritual Level</p>
+                    <p class="text-sm font-semibold text-text-primary">Seeker</p>
+                </div>
+
+                <!-- Mantras Completed -->
+                <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-4 cosmic-shadow border border-cosmic/30 text-center cursor-pointer hover:scale-105 transition-transform" onclick="showMantraProgress()">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-600 rounded-full mx-auto mb-2 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-text-secondary mb-1">Mantras Today</p>
+                    <p class="text-sm font-semibold text-text-primary"><span id="mantrasCompleted">108</span>/108</p>
+                </div>
+
+                <!-- Next Muhurta -->
+                <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-4 cosmic-shadow border border-cosmic/30 text-center cursor-pointer hover:scale-105 transition-transform" onclick="showNextMuhurta()">
+                    <div class="w-12 h-12 bg-gradient-to-br from-success to-success-600 rounded-full mx-auto mb-2 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-text-secondary mb-1">Next Muhurta</p>
+                    <p class="text-sm font-semibold text-text-primary" id="nextMuhurta">6:30 AM</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notifications Center -->
+        <section class="mb-8">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/30">
+                <h2 class="text-lg font-heading font-semibold text-text-primary mb-4">Planetary Alerts</h2>
+                
+                <div class="space-y-3" id="alertsList">
+                    <div class="flex items-start space-x-3 p-3 bg-warning-900/20 rounded-lg border-l-4 border-warning">
+                        <div class="w-2 h-2 bg-warning rounded-full mt-2 animate-pulse"></div>
+                        <div class="flex-1">
+                            <p class="text-sm text-text-primary font-medium">Mercury Retrograde Alert</p>
+                            <p class="text-xs text-text-secondary">Avoid signing important documents until Aug 20th</p>
+                        </div>
+                        <span class="text-xs text-text-secondary">2h ago</span>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3 p-3 bg-success-900/20 rounded-lg border-l-4 border-success">
+                        <div class="w-2 h-2 bg-success rounded-full mt-2"></div>
+                        <div class="flex-1">
+                            <p class="text-sm text-text-primary font-medium">Favorable Jupiter Transit</p>
+                            <p class="text-xs text-text-secondary">Perfect time for new investments and learning</p>
+                        </div>
+                        <span class="text-xs text-text-secondary">5h ago</span>
+                    </div>
+                </div>
+                
+                <button class="w-full mt-4 py-2 text-primary hover:text-primary-400 transition-colors text-sm" onclick="showAllNotifications()">
+                    View All Notifications →
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Voice Chat Modal -->
+    <div id="voiceChatModal" class="fixed inset-0 bg-background/95 backdrop-blur-cosmic z-50 hidden">
+        <div class="min-h-screen flex items-center justify-center p-4">
+            <div class="bg-surface/90 rounded-2xl p-8 max-w-md w-full cosmic-shadow-lg border border-cosmic">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-secondary to-secondary-600 rounded-full mx-auto mb-4 flex items-center justify-center cosmic-pulse">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-text-primary mb-2">AI Pandit Ji</h3>
+                    <p class="text-text-secondary mb-6">Speak your question and get instant astrological guidance</p>
+                    
+                    <div class="mb-6">
+                        <div id="voiceStatus" class="text-primary">Click to start speaking...</div>
+                        <div id="voiceTranscript" class="text-sm text-text-secondary mt-2 min-h-[40px] italic"></div>
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        <button id="startVoice" class="flex-1 py-3 px-6 bg-gradient-to-r from-secondary to-secondary-600 text-white font-semibold rounded-lg hover:from-secondary-600 hover:to-secondary-700 transition-all">
+                            Start Speaking
+                        </button>
+                        <button id="closeVoiceChat" class="px-6 py-3 border border-cosmic text-text-secondary hover:border-primary transition-colors rounded-lg">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-cosmic border-t border-cosmic z-50">
+        <div class="max-w-md mx-auto px-4 py-2">
+            <div class="flex items-center justify-around">
+                <!-- Home -->
+                <a href="dashboard_home.html" class="flex flex-col items-center py-2 px-3 text-primary">
+                    <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                    <span class="text-xs font-medium">Home</span>
+                </a>
+
+                <!-- Kundali -->
+                <a href="ai_kundali_generator.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                    </svg>
+                    <span class="text-xs font-medium">Kundali</span>
+                </a>
+
+                <!-- Horoscope -->
+                <a href="daily_horoscope_remedies.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                    <span class="text-xs font-medium">Horoscope</span>
+                </a>
+
+                <!-- Progress -->
+                <a href="spiritual_progress_tracker.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    <span class="text-xs font-medium">Progress</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Update current date
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        // Generate dynamic horoscope content
+        function generateDailyContent() {
+            const horoscopes = [
+                "Today brings positive energy for career growth. Mercury's favorable position enhances communication skills. Focus on important decisions after 2 PM for best results.",
+                "Jupiter's transit brings opportunities for learning and spiritual growth. Your analytical nature will help you make sound decisions today.",
+                "Venus blesses relationships today. Single Virgos may encounter someone special. Focus on clear communication with loved ones.",
+                "Mars energizes your professional sector. Take initiative in important projects. Afternoon hours are most favorable for meetings."
+            ];
+            
+            const colors = ['Green', 'Blue', 'Yellow', 'Orange', 'Purple', 'White'];
+            const numbers = [3, 7, 9, 12, 15, 21];
+            
+            const guidance = [
+                "Mercury's transit through your 10th house brings opportunities for professional advancement. Practice the Ganesha mantra 108 times before important meetings.",
+                "Venus enhances creativity today. Focus on artistic pursuits and relationship harmony. Chant 'Om Shri Lakshmi Namaha' for abundance.",
+                "Jupiter's influence supports educational endeavors. This is an excellent time for learning new skills and spiritual practices.",
+                "Mars brings energy for physical activities. Balance work with exercise. Evening meditation will bring clarity."
+            ];
+            
+            // Randomize content based on date
+            const today = new Date().getDate();
+            const horoscopeIndex = today % horoscopes.length;
+            const colorIndex = today % colors.length;
+            const numberIndex = today % numbers.length;
+            const guidanceIndex = today % guidance.length;
+            
+            document.getElementById('dailyHoroscope').textContent = horoscopes[horoscopeIndex];
+            document.getElementById('luckyColor').textContent = colors[colorIndex];
+            document.getElementById('luckyNumber').textContent = numbers[numberIndex];
+            document.getElementById('spiritualGuidance').textContent = guidance[guidanceIndex];
+        }
+
+        // Voice functionality
+        let recognition;
+        let isListening = false;
+
+        function initializeSpeechRecognition() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                recognition.continuous = false;
+                recognition.interimResults = true;
+                recognition.lang = 'en-US';
+                
+                recognition.onstart = () => {
+                    isListening = true;
+                    document.getElementById('voiceStatus').textContent = 'Listening... speak now';
+                    document.getElementById('startVoice').textContent = 'Listening...';
+                };
+                
+                recognition.onresult = (event) => {
+                    let transcript = '';
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        transcript += event.results[i][0].transcript;
+                    }
+                    document.getElementById('voiceTranscript').textContent = transcript;
+                };
+                
+                recognition.onend = () => {
+                    isListening = false;
+                    document.getElementById('voiceStatus').textContent = 'Processing your question...';
+                    document.getElementById('startVoice').textContent = 'Start Speaking';
+                    
+                    // Simulate AI response
+                    setTimeout(() => {
+                        const responses = [
+                            "Based on your birth chart, I see positive energy surrounding you today.",
+                            "The planets suggest focusing on relationships and career balance.",
+                            "Your spiritual journey is progressing well. Continue your daily practices.",
+                            "Mercury's influence brings clarity to your thoughts. Trust your intuition."
+                        ];
+                        const response = responses[Math.floor(Math.random() * responses.length)];
+                        
+                        if ('speechSynthesis' in window) {
+                            const utterance = new SpeechSynthesisUtterance(response);
+                            speechSynthesis.speak(utterance);
+                        }
+                        
+                        document.getElementById('voiceStatus').textContent = 'AI Pandit is speaking...';
+                        document.getElementById('voiceTranscript').textContent = response;
+                    }, 2000);
+                };
+            }
+        }
+
+        // Voice chat functions
+        function startVoiceChat() {
+            document.getElementById('voiceChatModal').classList.remove('hidden');
+        }
+
+        document.getElementById('closeVoiceChat').addEventListener('click', () => {
+            document.getElementById('voiceChatModal').classList.add('hidden');
+            if (recognition && isListening) {
+                recognition.stop();
+            }
+        });
+
+        document.getElementById('startVoice').addEventListener('click', () => {
+            if (recognition) {
+                if (isListening) {
+                    recognition.stop();
+                } else {
+                    recognition.start();
+                }
+            } else {
+                alert('Speech recognition not supported in your browser');
+            }
+        });
+
+        // Other interactive functions
+        function openVastuScanner() {
+            alert('Vastu Scanner feature coming soon! This will use AR to scan your home layout.');
+        }
+
+        function openMuhurtaFinder() {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            alert(`Next Auspicious Times:
+            
+Today (${today.toDateString()}):
+• 6:30 AM - 7:15 AM (Morning Prayers)
+• 12:00 PM - 1:00 PM (Midday Muhurta)
+
+Tomorrow (${tomorrow.toDateString()}):
+• 5:45 AM - 6:30 AM (Brahma Muhurta)
+• 11:30 AM - 12:30 PM (Success Muhurta)`);
+        }
+
+        function showMantraProgress() {
+            alert('Today\'s Mantra Progress:\n\n✅ Ganesha Mantra: 108/108\n⏳ Hanuman Chalisa: 1/1\n✅ Evening Prayers: Complete\n\nTotal XP gained today: +125');
+        }
+
+        function showNextMuhurta() {
+            const now = new Date();
+            const nextMuhurta = new Date(now);
+            nextMuhurta.setHours(18, 30, 0, 0); // 6:30 PM
+            
+            if (now > nextMuhurta) {
+                nextMuhurta.setDate(nextMuhurta.getDate() + 1);
+                nextMuhurta.setHours(6, 30, 0, 0); // 6:30 AM next day
+            }
+            
+            const timeUntil = nextMuhurta.getTime() - now.getTime();
+            const hours = Math.floor(timeUntil / (1000 * 60 * 60));
+            const minutes = Math.floor((timeUntil % (1000 * 60 * 60)) / (1000 * 60));
+            
+            alert(`Next Auspicious Time:\n\n⏰ ${nextMuhurta.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}\n📅 ${nextMuhurta.toDateString()}\n\n⏳ Time remaining: ${hours}h ${minutes}m\n\n✨ Perfect for:\n• Starting new projects\n• Important decisions\n• Spiritual practices`);
+        }
+
+        function readMore() {
+            window.location.href = 'daily_horoscope_remedies.html';
+        }
+
+        function showAllNotifications() {
+            alert('All Notifications:\n\n🟡 Mercury Retrograde Alert (2h ago)\n🟢 Favorable Jupiter Transit (5h ago)\n🔴 Mars Square Venus (1d ago)\n🟠 Full Moon Approaching (2d ago)\n✅ Weekly Horoscope Available (3d ago)');
+        }
+
+        // Notification functionality
+        document.getElementById('notificationBtn').addEventListener('click', () => {
+            showAllNotifications();
+        });
+
+        // Voice button functionality
+        document.getElementById('voiceBtn').addEventListener('click', () => {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance('Welcome to your spiritual dashboard. How can I assist you today?');
+                speechSynthesis.speak(utterance);
+            } else {
+                startVoiceChat();
+            }
+        });
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadProfile();
+            updateCurrentDate();
+            generateDailyContent();
+            initializeSpeechRecognition();
+        });
+
+        // Update content every hour
+        setInterval(generateDailyContent, 3600000);
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

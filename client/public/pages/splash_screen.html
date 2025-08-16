@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASTRO VANBA - Splash Screen</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --cosmic-gradient: linear-gradient(135deg, #0a0a23 0%, #1a1a3e 25%, #2d1b69 50%, #4b0082 75%, #000033 100%);
+            --gold-shimmer: linear-gradient(45deg, #ffd700, #ffec8b, #ffd700, #daa520);
+            --star-twinkle: #ffffff;
+            --particle-glow: rgba(255, 215, 0, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            background: var(--cosmic-gradient);
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Animated Cosmic Background */
+        .cosmic-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--cosmic-gradient);
+            animation: cosmic-shift 20s ease-in-out infinite;
+        }
+
+        .cosmic-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(138, 43, 226, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(75, 0, 130, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(25, 25, 112, 0.1) 0%, transparent 70%);
+            animation: cosmic-drift 25s linear infinite;
+        }
+
+        /* Star Field Animation */
+        .stars-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--star-twinkle);
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+            animation: star-twinkle 3s ease-in-out infinite;
+        }
+
+        .star.large {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.9);
+        }
+
+        .star.medium {
+            width: 2.5px;
+            height: 2.5px;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+        }
+
+        /* Floating Sanskrit Symbols */
+        .sanskrit-symbols {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .sanskrit-symbol {
+            position: absolute;
+            font-size: 24px;
+            color: rgba(255, 215, 0, 0.1);
+            font-family: 'Cinzel', serif;
+            animation: float-symbol 15s linear infinite;
+            user-select: none;
+        }
+
+        /* Cosmic Particles */
+        .cosmic-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--particle-glow);
+            border-radius: 50%;
+            animation: particle-drift 12s linear infinite;
+            box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Main Content Container */
+        .splash-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* Logo Section */
+        .logo-container {
+            margin-bottom: 2rem;
+            animation: logo-entrance 2s ease-out;
+        }
+
+        .main-logo {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            background: var(--gold-shimmer);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: shimmer-text 3s ease-in-out infinite, logo-glow 4s ease-in-out infinite alternate;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .powered-by {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            font-weight: 300;
+            color: #b8860b;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fade-in-up 2s ease-out 0.5s forwards, subtle-pulse 3s ease-in-out 2s infinite;
+            text-shadow: 0 0 10px rgba(184, 134, 11, 0.3);
+        }
+
+        /* Loading Section */
+        .loading-section {
+            margin-top: 3rem;
+            animation: loading-entrance 2s ease-out 1s both;
+        }
+
+        .loading-orbit {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            margin: 0 auto 2rem;
+        }
+
+        .orbit-ring {
+            position: absolute;
+            border: 2px solid transparent;
+            border-top: 2px solid #ffd700;
+            border-right: 2px solid rgba(255, 215, 0, 0.6);
+            border-radius: 50%;
+            animation: orbital-rotation 2s linear infinite;
+        }
+
+        .orbit-ring:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 0;
+            left: 0;
+            animation-duration: 2s;
+        }
+
+        .orbit-ring:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 10px;
+            left: 10px;
+            animation-duration: 3s;
+            animation-direction: reverse;
+            border-top-color: #ff6b6b;
+            border-right-color: rgba(255, 107, 107, 0.6);
+        }
+
+        .orbit-ring:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            top: 20px;
+            left: 20px;
+            animation-duration: 1.5s;
+            border-top-color: #4ecdc4;
+            border-right-color: rgba(78, 205, 196, 0.6);
+        }
+
+        .orbit-center {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle, #ffd700, #daa520);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            animation: center-pulse 2s ease-in-out infinite;
+        }
+
+        .loading-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.05em;
+            animation: text-breathe 3s ease-in-out infinite;
+        }
+
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            animation: dot-pulse 1.5s ease-in-out infinite;
+        }
+
+        .dot:nth-child(1) { animation-delay: 0s; }
+        .dot:nth-child(2) { animation-delay: 0.3s; }
+        .dot:nth-child(3) { animation-delay: 0.6s; }
+
+        /* Skip Hint */
+        .skip-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            animation: fade-in 3s ease-out 2s both, gentle-bounce 2s ease-in-out 4s infinite;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Animations */
+        @keyframes cosmic-shift {
+            0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+            50% { filter: hue-rotate(15deg) brightness(1.1); }
+        }
+
+        @keyframes cosmic-drift {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes star-twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes float-symbol {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10%, 90% {
+                opacity: 0.1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes particle-drift {
+            0% {
+                transform: translateY(100vh) translateX(-50px);
+                opacity: 0;
+            }
+            10%, 90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes logo-entrance {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes shimmer-text {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes logo-glow {
+            0% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
+            100% { text-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 107, 107, 0.3); }
+        }
+
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subtle-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes loading-entrance {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes orbital-rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes center-pulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.2);
+                box-shadow: 0 0 30px rgba(255, 215, 0, 1);
+            }
+        }
+
+        @keyframes text-breathe {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes dot-pulse {
+            0%, 100% { 
+                background: rgba(255, 215, 0, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                background: rgba(255, 215, 0, 1);
+                transform: scale(1.3);
+            }
+        }
+
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes gentle-bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-container {
+                margin-bottom: 1.5rem;
+            }
+            
+            .loading-section {
+                margin-top: 2rem;
+            }
+            
+            .loading-orbit {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .orbit-ring:nth-child(1) {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .orbit-ring:nth-child(2) {
+                width: 45px;
+                height: 45px;
+                top: 7.5px;
+                left: 7.5px;
+            }
+            
+            .orbit-ring:nth-child(3) {
+                width: 30px;
+                height: 30px;
+                top: 15px;
+                left: 15px;
+            }
+            
+            .skip-hint {
+                bottom: 1.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .main-logo {
+                color: #ffd700;
+                -webkit-text-fill-color: #ffd700;
+            }
+            
+            .powered-by {
+                color: #ffffff;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fastrovanb4866back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body>
+    <!-- Animated Cosmic Background -->
+    <div class="cosmic-background"></div>
+    
+    <!-- Star Field -->
+    <div class="stars-container" id="stars-container"></div>
+    
+    <!-- Sanskrit Symbols -->
+    <div class="sanskrit-symbols" id="sanskrit-symbols"></div>
+    
+    <!-- Cosmic Particles -->
+    <div class="cosmic-particles" id="cosmic-particles"></div>
+    
+    <!-- Main Splash Content -->
+    <div class="splash-container">
+        <div class="logo-container">
+            <div class="main-logo">ASTRO VANBA</div>
+            <div class="powered-by">POWERED BY VANBA</div>
+        </div>
+        
+        <div class="loading-section">
+            <div class="loading-orbit">
+                <div class="orbit-ring"></div>
+                <div class="orbit-ring"></div>
+                <div class="orbit-ring"></div>
+                <div class="orbit-center"></div>
+            </div>
+            
+            <div class="loading-text">Connecting to cosmic energies...</div>
+            
+            <div class="progress-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        
+        <div class="skip-hint" onclick="skipToApp()">Tap to continue</div>
+    </div>
+
+    <script>
+        // Create animated star field
+        function createStars() {
+            const starsContainer = document.getElementById('stars-container');
+            const numberOfStars = 150;
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Add size variations
+                const random = Math.random();
+                if (random > 0.8) star.classList.add('large');
+                else if (random > 0.6) star.classList.add('medium');
+                
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (2 + Math.random() * 3) + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create floating Sanskrit symbols
+        function createSanskritSymbols() {
+            const symbolsContainer = document.getElementById('sanskrit-symbols');
+            const symbols = ['ॐ', '🕉', '☯', '✧', '◉', '⚹', '※', '❋'];
+            const numberOfSymbols = 8;
+
+            for (let i = 0; i < numberOfSymbols; i++) {
+                const symbol = document.createElement('div');
+                symbol.className = 'sanskrit-symbol';
+                symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                
+                symbol.style.left = Math.random() * 100 + '%';
+                symbol.style.animationDelay = Math.random() * 15 + 's';
+                symbol.style.animationDuration = (10 + Math.random() * 10) + 's';
+                symbol.style.fontSize = (20 + Math.random() * 15) + 'px';
+                
+                symbolsContainer.appendChild(symbol);
+            }
+        }
+
+        // Create cosmic particles
+        function createCosmicParticles() {
+            const particlesContainer = document.getElementById('cosmic-particles');
+            const numberOfParticles = 20;
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                particle.style.animationDuration = (8 + Math.random() * 8) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Progressive loading text updates
+        function updateLoadingText() {
+            const loadingTexts = [
+                'Connecting to cosmic energies...',
+                'Aligning celestial bodies...',
+                'Preparing your spiritual journey...',
+                'Loading ancient wisdom...',
+                'Almost ready...'
+            ];
+            
+            const loadingElement = document.querySelector('.loading-text');
+            let index = 0;
+            
+            const interval = setInterval(() => {
+                index++;
+                if (index < loadingTexts.length) {
+                    loadingElement.textContent = loadingTexts[index];
+                } else {
+                    clearInterval(interval);
+                }
+            }, 800);
+        }
+
+        // Skip to main app
+        function skipToApp() {
+            document.body.style.transition = 'opacity 0.5s ease-out';
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = '../pages/dashboard_home.html';
+            }, 500);
+        }
+
+        // Auto-redirect after splash duration
+        function autoRedirect() {
+            setTimeout(skipToApp, 4000); // 4 seconds
+        }
+
+        // Optional spiritual chime sound (if supported)
+        function playChime() {
+            // Create a simple web audio context chime
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(528, audioContext.currentTime); // 528 Hz - Love frequency
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.1);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.5);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 1.5);
+            } catch (e) {
+                // Audio not supported, continue silently
+                console.log('Audio context not supported');
+            }
+        }
+
+        // Initialize splash screen
+        function initializeSplash() {
+            createStars();
+            createSanskritSymbols();
+            createCosmicParticles();
+            updateLoadingText();
+            autoRedirect();
+            
+            // Play chime after a short delay
+            setTimeout(playChime, 1000);
+        }
+
+        // Add click/touch handlers for skip functionality
+        document.addEventListener('click', skipToApp);
+        document.addEventListener('touchstart', skipToApp);
+
+        // Handle keyboard interaction (Enter or Space to skip)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                skipToApp();
+            }
+        });
+
+        // Initialize when page loads
+        window.addEventListener('load', initializeSplash);
+
+        // Fallback initialization if load event already fired
+        if (document.readyState === 'complete') {
+            initializeSplash();
+        }
+
+        // Handle visibility change (pause animations when tab not active)
+        document.addEventListener('visibilitychange', () => {
+            const isHidden = document.hidden;
+            const elements = document.querySelectorAll('.star, .sanskrit-symbol, .particle');
+            
+            elements.forEach(el => {
+                if (isHidden) {
+                    el.style.animationPlayState = 'paused';
+                } else {
+                    el.style.animationPlayState = 'running';
+                }
+            });
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

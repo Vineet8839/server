@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Horoscope & Remedies - ASTRO VANBA</title>
+    <link rel="stylesheet" href="../css/main.css" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fastrovanb4866back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background min-h-screen font-body">
+    <!-- Top Header -->
+    <header class="bg-surface/80 backdrop-blur-cosmic border-b border-cosmic sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-heading font-semibold text-text-primary">Daily Horoscope</h1>
+                        <p class="text-sm text-text-secondary">Thursday, 15 Aug 2025</p>
+                    </div>
+                </div>
+                
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-3">
+                    <!-- Bookmark -->
+                    <button class="p-2 text-text-secondary hover:text-accent transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Share -->
+                    <button class="p-2 text-text-secondary hover:text-primary transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-6 pb-24">
+        <!-- Cosmic Calendar Section -->
+        <section class="mb-6">
+            <div class="bg-gradient-to-r from-secondary-900/40 to-primary-900/30 rounded-2xl p-4 cosmic-shadow border border-cosmic">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-lg font-heading font-semibold text-text-primary">Cosmic Calendar</h2>
+                    <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-accent animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-surface/60 rounded-lg p-3">
+                        <p class="text-xs text-text-secondary mb-1">Today's Festival</p>
+                        <p class="text-sm font-medium text-accent">Janmashtami</p>
+                    </div>
+                    <div class="bg-surface/60 rounded-lg p-3">
+                        <p class="text-xs text-text-secondary mb-1">Planetary Event</p>
+                        <p class="text-sm font-medium text-primary">Mercury Transit</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Time Period Tabs -->
+        <section class="mb-6">
+            <div class="flex bg-surface/60 rounded-xl p-1 cosmic-shadow">
+                <button class="flex-1 py-2 px-4 bg-primary text-white rounded-lg font-medium text-sm transition-all">
+                    Daily
+                </button>
+                <button class="flex-1 py-2 px-4 text-text-secondary hover:text-primary transition-colors font-medium text-sm">
+                    Weekly
+                </button>
+                <button class="flex-1 py-2 px-4 text-text-secondary hover:text-primary transition-colors font-medium text-sm">
+                    Monthly
+                </button>
+            </div>
+        </section>
+
+        <!-- Main Horoscope Card -->
+        <section class="mb-6">
+            <div class="bg-gradient-to-br from-surface/80 to-secondary-900/20 rounded-2xl p-6 cosmic-shadow-lg border border-cosmic">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                            <img src="https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Virgo constellation" class="w-10 h-10 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-heading font-semibold text-text-primary">Virgo</h3>
+                            <p class="text-text-secondary">कन्या राशि</p>
+                            <div class="flex items-center mt-1">
+                                <div class="flex space-x-1">
+                                    <div class="w-2 h-2 bg-success rounded-full"></div>
+                                    <div class="w-2 h-2 bg-success rounded-full"></div>
+                                    <div class="w-2 h-2 bg-success rounded-full"></div>
+                                    <div class="w-2 h-2 bg-warning rounded-full"></div>
+                                    <div class="w-2 h-2 bg-text-secondary/30 rounded-full"></div>
+                                </div>
+                                <span class="text-xs text-text-secondary ml-2">85% Positive</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-right">
+                        <p class="text-xs text-text-secondary">Valid Until</p>
+                        <p class="text-sm font-medium text-accent">11:59 PM</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-primary-900/20 to-secondary-900/20 rounded-lg p-4 mb-4">
+                    <p class="text-text-primary leading-relaxed">
+                        Today brings exceptional opportunities for professional growth and personal development. 
+                        Mercury's favorable position in your 10th house enhances communication skills and analytical thinking. 
+                        The cosmic energies support important decisions, especially those made after 2 PM. 
+                        Your natural wisdom and attention to detail will be your greatest assets today.
+                    </p>
+                </div>
+                
+                <!-- Planetary Influences -->
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="text-center">
+                        <div class="w-8 h-8 bg-primary/20 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-text-secondary">Mercury</p>
+                        <p class="text-sm font-medium text-primary">Favorable</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-8 h-8 bg-accent/20 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-text-secondary">Venus</p>
+                        <p class="text-sm font-medium text-accent">Strong</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-8 h-8 bg-warning/20 rounded-full mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-warning" fill="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-text-secondary">Mars</p>
+                        <p class="text-sm font-medium text-warning">Neutral</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expandable Sections -->
+        <section class="mb-6 space-y-4">
+            <!-- General Forecast -->
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl cosmic-shadow border border-cosmic/30">
+                <button class="w-full p-4 flex items-center justify-between text-left" onclick="toggleSection('general')">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-semibold text-text-primary">General Forecast</h3>
+                            <p class="text-xs text-text-secondary">Overall energy & guidance</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs bg-success/20 text-success px-2 py-1 rounded-full">92%</span>
+                        <svg class="w-5 h-5 text-text-secondary transform transition-transform" id="general-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                </button>
+                <div class="px-4 pb-4 hidden" id="general-content">
+                    <p class="text-text-primary leading-relaxed mb-3">
+                        The cosmic alignment favors new beginnings and creative endeavors. Your analytical nature will help you make sound decisions. 
+                        Trust your intuition when dealing with complex situations.
+                    </p>
+                    <div class="bg-primary-900/20 rounded-lg p-3">
+                        <p class="text-sm text-text-secondary mb-1">Best Time for Important Decisions</p>
+                        <p class="text-primary font-medium">2:00 PM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Love & Relationships -->
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl cosmic-shadow border border-cosmic/30">
+                <button class="w-full p-4 flex items-center justify-between text-left" onclick="toggleSection('love')">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-error/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-semibold text-text-primary">Love & Relationships</h3>
+                            <p class="text-xs text-text-secondary">Romance & partnerships</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs bg-accent/20 text-accent px-2 py-1 rounded-full">78%</span>
+                        <svg class="w-5 h-5 text-text-secondary transform transition-transform" id="love-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                </button>
+                <div class="px-4 pb-4 hidden" id="love-content">
+                    <p class="text-text-primary leading-relaxed mb-3">
+                        Venus brings harmony to existing relationships. Single Virgos may encounter someone special through work connections. 
+                        Communication is key to resolving any misunderstandings.
+                    </p>
+                    <div class="bg-error-900/20 rounded-lg p-3">
+                        <p class="text-sm text-text-secondary mb-1">Relationship Advice</p>
+                        <p class="text-error font-medium">Express appreciation to your partner today</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career & Finance -->
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl cosmic-shadow border border-cosmic/30">
+                <button class="w-full p-4 flex items-center justify-between text-left" onclick="toggleSection('career')">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-semibold text-text-primary">Career & Finance</h3>
+                            <p class="text-xs text-text-secondary">Professional & monetary</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs bg-success/20 text-success px-2 py-1 rounded-full">88%</span>
+                        <svg class="w-5 h-5 text-text-secondary transform transition-transform" id="career-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                </button>
+                <div class="px-4 pb-4 hidden" id="career-content">
+                    <p class="text-text-primary leading-relaxed mb-3">
+                        Excellent day for career advancement and financial planning. Your attention to detail will be noticed by superiors. 
+                        Consider long-term investments and avoid impulsive spending.
+                    </p>
+                    <div class="bg-accent-900/20 rounded-lg p-3">
+                        <p class="text-sm text-text-secondary mb-1">Financial Tip</p>
+                        <p class="text-accent font-medium">Review and organize your budget today</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health & Wellness -->
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl cosmic-shadow border border-cosmic/30">
+                <button class="w-full p-4 flex items-center justify-between text-left" onclick="toggleSection('health')">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-success/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-semibold text-text-primary">Health & Wellness</h3>
+                            <p class="text-xs text-text-secondary">Physical & mental well-being</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs bg-warning/20 text-warning px-2 py-1 rounded-full">75%</span>
+                        <svg class="w-5 h-5 text-text-secondary transform transition-transform" id="health-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                </button>
+                <div class="px-4 pb-4 hidden" id="health-content">
+                    <p class="text-text-primary leading-relaxed mb-3">
+                        Focus on digestive health and stress management. Light exercise and meditation will boost your energy levels. 
+                        Avoid heavy meals and stay hydrated throughout the day.
+                    </p>
+                    <div class="bg-success-900/20 rounded-lg p-3">
+                        <p class="text-sm text-text-secondary mb-1">Wellness Tip</p>
+                        <p class="text-success font-medium">Practice deep breathing for 10 minutes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lucky Elements -->
+        <section class="mb-6">
+            <div class="bg-gradient-to-br from-accent-900/20 to-primary-900/20 rounded-2xl p-6 cosmic-shadow border border-cosmic">
+                <h2 class="text-lg font-heading font-semibold text-text-primary mb-4">Lucky Elements</h2>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-surface/60 rounded-xl p-4 text-center">
+                        <div class="w-12 h-12 bg-success/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                            <div class="w-6 h-6 bg-success rounded-full"></div>
+                        </div>
+                        <p class="text-xs text-text-secondary mb-1">Lucky Color</p>
+                        <p class="text-lg font-semibold text-success">Green</p>
+                        <p class="text-xs text-text-secondary">Wear or decorate with</p>
+                    </div>
+                    
+                    <div class="bg-surface/60 rounded-xl p-4 text-center">
+                        <div class="w-12 h-12 bg-accent/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                            <span class="text-accent font-bold text-lg">7</span>
+                        </div>
+                        <p class="text-xs text-text-secondary mb-1">Lucky Number</p>
+                        <p class="text-lg font-semibold text-accent">7</p>
+                        <p class="text-xs text-text-secondary">Use in decisions</p>
+                    </div>
+                    
+                    <div class="bg-surface/60 rounded-xl p-4 text-center">
+                        <div class="w-12 h-12 bg-secondary/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                            <img src="https://images.pixabay.com/photos/2017/12/29/16/47/emerald-3048847_1280.jpg" alt="Emerald gemstone" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        </div>
+                        <p class="text-xs text-text-secondary mb-1">Lucky Gemstone</p>
+                        <p class="text-lg font-semibold text-secondary">Emerald</p>
+                        <p class="text-xs text-text-secondary">Enhances wisdom</p>
+                    </div>
+                    
+                    <div class="bg-surface/60 rounded-xl p-4 text-center">
+                        <div class="w-12 h-12 bg-primary/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-text-secondary mb-1">Auspicious Time</p>
+                        <p class="text-lg font-semibold text-primary">2-6 PM</p>
+                        <p class="text-xs text-text-secondary">Best for decisions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Mantra Player -->
+        <section class="mb-6">
+            <div class="bg-gradient-to-br from-secondary-900/40 to-primary-900/30 rounded-2xl p-6 cosmic-shadow border border-cosmic">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h2 class="text-lg font-heading font-semibold text-text-primary">Today's Mantra</h2>
+                        <p class="text-sm text-text-secondary">गणेश मंत्र • Ganesha Mantra</p>
+                    </div>
+                    <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 text-accent animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="bg-surface/60 rounded-xl p-4 mb-4">
+                    <p class="text-center text-xl font-heading text-accent mb-2">
+                        ॐ गं गणपतये नमः
+                    </p>
+                    <p class="text-center text-sm text-text-secondary">
+                        Om Gam Ganapataye Namaha
+                    </p>
+                </div>
+                
+                <!-- Audio Player Controls -->
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <button class="w-12 h-12 bg-primary rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <div class="flex-1 bg-surface/60 rounded-full h-2">
+                        <div class="bg-primary h-2 rounded-full w-1/3"></div>
+                    </div>
+                    <span class="text-sm text-text-secondary">1:23 / 3:45</span>
+                </div>
+                
+                <!-- Repetition Counter -->
+                <div class="flex items-center justify-between">
+                    <div class="text-center">
+                        <p class="text-2xl font-bold text-primary">108</p>
+                        <p class="text-xs text-text-secondary">Target</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-2xl font-bold text-accent">47</p>
+                        <p class="text-xs text-text-secondary">Completed</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-2xl font-bold text-success">61</p>
+                        <p class="text-xs text-text-secondary">Remaining</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notification Settings -->
+        <section class="mb-6">
+            <div class="bg-surface/60 backdrop-blur-sm rounded-xl p-6 cosmic-shadow border border-cosmic/30">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-heading font-semibold text-text-primary">Daily Notifications</h2>
+                    <button class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-primary">Morning Horoscope</p>
+                            <p class="text-xs text-text-secondary">Daily at 7:00 AM</p>
+                        </div>
+                        <div class="w-12 h-6 bg-primary rounded-full relative">
+                            <div class="w-5 h-5 bg-white rounded-full absolute right-0.5 top-0.5"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-text-primary">Mantra Reminder</p>
+                            <p class="text-xs text-text-secondary">Daily at 6:00 PM</p>
+                        </div>
+                        <div class="w-12 h-6 bg-text-secondary/30 rounded-full relative">
+                            <div class="w-5 h-5 bg-white rounded-full absolute left-0.5 top-0.5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-cosmic border-t border-cosmic z-50">
+        <div class="max-w-md mx-auto px-4 py-2">
+            <div class="flex items-center justify-around">
+                <!-- Home -->
+                <a href="dashboard_home.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span class="text-xs font-medium">Home</span>
+                </a>
+
+                <!-- Kundali -->
+                <a href="ai_kundali_generator.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                    </svg>
+                    <span class="text-xs font-medium">Kundali</span>
+                </a>
+
+                <!-- Horoscope -->
+                <a href="daily_horoscope_remedies.html" class="flex flex-col items-center py-2 px-3 text-primary">
+                    <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span class="text-xs font-medium">Horoscope</span>
+                </a>
+
+                <!-- Progress -->
+                <a href="spiritual_progress_tracker.html" class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    <span class="text-xs font-medium">Progress</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
