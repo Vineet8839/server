@@ -1,0 +1,13 @@
+{
+  "name": "astro-vanba",
+  "version": "1.0.0",
+  "description": "Astro Vanba - Vedic Astrology Calculator",
+  "scripts": {
+    "build": "cd server && npm install && npm run build",
+    "start": "cd server && npm start"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "private": true
+}
